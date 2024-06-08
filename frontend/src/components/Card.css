@@ -1,0 +1,4 @@
+.hover-card:hover {
+  background-color: #eac8e2 !important;
+  transition: background-color 0.3s ease-in;
+}

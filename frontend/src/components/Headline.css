@@ -1,0 +1,14 @@
+.headline{
+    justify-content: center;
+    align-items: center;
+    /* padding: 50px; */
+    padding-left: 45%;
+    padding-top: 3%;
+    text-decoration-line: underline;
+    text-decoration-color: rgb(200, 126, 200);
+    text-decoration-thickness: 4px;
+    line-height: 30px;
+    text-underline-offset: 1em;
+    font-size: x-large;
+    font-style: oblique;
+}
