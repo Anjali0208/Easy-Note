@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { userContext } from "../../App";
 
 function Logout() {
-  const { state, dispatch } = useContext(userContext);
+  const { dispatch } = useContext(userContext);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -17,6 +17,8 @@ function Logout() {
     })
       .then((res) => {
         dispatch({ type: "USER", payload: false });
+        // added new code
+        localStorage.removeItem("loggedIn");
         navigate("/login", { replace: true });
         if (!res.status === 200) {
           const error = new Error(res.error);

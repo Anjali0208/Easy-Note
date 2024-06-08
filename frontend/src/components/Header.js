@@ -1,10 +1,19 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Chatting from "./Chatting/Chatting";
 import { userContext } from "../App";
 
 function Header() {
   const { state, dispatch } = useContext(userContext);
+
+  // added new code
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("loggedIn");
+    if (loggedIn) {
+      dispatch({ type: "USER", payload: true });
+    }
+  }, [dispatch]);
+
   const RenderMenu = () => {
     if (state) {
       return (

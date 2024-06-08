@@ -51,6 +51,9 @@ const Login = () => {
     if (res.status === 200 && !data.err) {
       // Successful login (no error message returned from the server)
       dispatch({ type: "USER", payload: true });
+
+      // added new code
+      localStorage.setItem("loggedIn", true);
       window.alert("Login successful");
       navigate("/");
     } else if (res.status === 400) {
