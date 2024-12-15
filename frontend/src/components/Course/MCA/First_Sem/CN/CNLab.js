@@ -1,6 +1,6 @@
 import React from "react";
 // import Header from '../../../Header'
-// import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import "../../Course.css";
 import Tables from "../../../Tables";
 import Card from "@mui/material/Card";
@@ -14,6 +14,18 @@ function JLab() {
     <>
       <div style={{ marginTop: "40px", textAlign: "center", color: "grey" }}>
         <h1>Computer Networks Lab (MCA-161)</h1>
+      </div>
+
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <Link
+          to="/cn_prac"
+          style={{ textDecoration: "none", marginRight: "20px" }}
+        >
+          <Button variant="outlined">Practical</Button>
+        </Link>
+        <Link to="/course_mca_first" style={{ textDecoration: "none" }}>
+          <Button variant="outlined">Back to course</Button>
+        </Link>
       </div>
 
       <div style={{ margin: "50px" }}>This page contains Syllabus of MCA</div>

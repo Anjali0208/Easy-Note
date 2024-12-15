@@ -31,8 +31,20 @@ function DS() {
           <Button variant="outlined">Notes</Button>
         </Link>
 
-        <Link to="/dbms_qp" style={{ textDecoration: "none" }}>
+        <Link
+          to="/dbms_qp"
+          style={{ textDecoration: "none", marginRight: "20px" }}
+        >
           <Button variant="outlined">Question Paper</Button>
+        </Link>
+        <Link
+          to="/dbms_ebook"
+          style={{ textDecoration: "none", marginRight: "20px" }}
+        >
+          <Button variant="outlined">Ebook</Button>
+        </Link>
+        <Link to="/course_mca_first" style={{ textDecoration: "none" }}>
+          <Button variant="outlined">Back to course</Button>
         </Link>
       </div>
       <div style={{ margin: "50px" }}>This page contains Syllabus of MCA</div>

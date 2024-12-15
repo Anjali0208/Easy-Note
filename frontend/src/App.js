@@ -14,11 +14,13 @@ import DS_Ebook from "./components/Course/MCA/First_Sem/DS/DS_Ebook";
 
 import DBMS from "./components/Course/MCA/First_Sem/DBMS/DBMS";
 import DBMSNotes from "./components/Course/MCA/First_Sem/DBMS/DBMSNotes";
+import DBMS_Ebook from "./components/Course/MCA/First_Sem/DBMS/DBMS_Ebook";
 import DBMSQP from "./components/Course/MCA/First_Sem/DBMS/DBMSQP";
 import DBMSLab from "./components/Course/MCA/First_Sem/DBMS/DBMSLab";
 
 import JAVA from "./components/Course/MCA/First_Sem/JAVA/JAVA";
 import JAVANotes from "./components/Course/MCA/First_Sem/JAVA/JAVANotes";
+import JAVA_Ebook from "./components/Course/MCA/First_Sem/JAVA/JAVA_Ebook";
 import JAVAQP from "./components/Course/MCA/First_Sem/JAVA/JAVAQP";
 import JLab from "./components/Course/MCA/First_Sem/JAVA/JAVALab.js";
 
@@ -26,12 +28,16 @@ import CN from "./components/Course/MCA/First_Sem/CN/CN";
 import CNNotes from "./components/Course/MCA/First_Sem/CN/CNNotes";
 import CNLab from "./components/Course/MCA/First_Sem/CN/CNLab";
 import CNQP from "./components/Course/MCA/First_Sem/CN/CNQP";
+import CN_Prac from "./components/Course/MCA/First_Sem/CN/CN_Prac";
 import CN_Ebook from "./components/Course/MCA/First_Sem/CN/CN_Ebook";
 
 import OS from "./components/Course/MCA/First_Sem/OS/OS";
 import OSLab from "./components/Course/MCA/First_Sem/OS/OSLab";
+import OS_Ebook from "./components/Course/MCA/First_Sem/OS/OS_Ebook";
 import OSNotes from "./components/Course/MCA/First_Sem/OS/OSNotes";
 import OSQP from "./components/Course/MCA/First_Sem/OS/OSQP";
+
+// minor project and Neus
 import Minor from "./components/Course/MCA/First_Sem/Minor/Minor";
 import Nues from "./components/Course/MCA/First_Sem/NUES/Nues";
 // import Design from "./components/Course/Third_Sem/Design/Design";
@@ -82,11 +88,13 @@ const Routing = () => {
 
       <Route path="/dbms" element={<DBMS />} />
       <Route path="/notes_dbms" element={<DBMSNotes />} />
+      <Route path="/dbms_ebook" element={<DBMS_Ebook />} />
       <Route path="/dbms_qp" element={<DBMSQP />} />
       <Route path="/dbms_lab" element={<DBMSLab />} />
 
       <Route path="/java" element={<JAVA />} />
       <Route path="/notes_java" element={<JAVANotes />} />
+      <Route path="/java_ebook" element={<JAVA_Ebook />} />
       <Route path="/java_qp" element={<JAVAQP />} />
       <Route path="/java_lab" element={<JLab />} />
 
@@ -94,10 +102,12 @@ const Routing = () => {
       <Route path="/notes_cn" element={<CNNotes />} />
       <Route path="/cn_qp" element={<CNQP />} />
       <Route path="/cn_lab" element={<CNLab />} />
+      <Route path="/cn_prac" element={<CN_Prac />} />
       <Route path="cn_ebook" element={<CN_Ebook />} />
 
       <Route path="/os" element={<OS />} />
       <Route path="/notes_os" element={<OSNotes />} />
+      <Route path="/os_ebook" element={<OS_Ebook />} />
       <Route path="/os_qp" element={<OSQP />} />
       <Route path="/os_lab" element={<OSLab />} />
 

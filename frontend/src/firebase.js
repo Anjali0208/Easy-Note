@@ -2,10 +2,10 @@
 
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
-const API_KEY = process.env.API_KEY;
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: API_KEY,
+  apiKey: process.env.REACT_APP_API_KEY,
   authDomain: "easynote-97f1b.firebaseapp.com",
   projectId: "easynote-97f1b",
   storageBucket: "easynote-97f1b.appspot.com",
@@ -14,5 +14,11 @@ const firebaseConfig = {
   measurementId: "G-D1K8G6N8KN",
 };
 
-export const app = initializeApp(firebaseConfig);
-export const storage = getStorage(app);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Initialize Storage and Firestore
+const storage = getStorage(app);
+const db = getFirestore(app);
+
+export { storage, db };

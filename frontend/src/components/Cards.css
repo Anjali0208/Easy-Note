@@ -1,0 +1,94 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.hover-card {
+  transition: background-color 0.3s ease-in;
+  margin: 15px;
+  flex: 1 1 300px;
+  min-width: 300px;
+  max-width: 350px;
+  height: 18rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hover-card:hover {
+  background-color: #eac8e2 !important;
+}
+
+.icon {
+  font-size: 3rem;
+  padding: 10px;
+}
+
+.btn-course {
+  margin-top: auto;
+  margin-bottom: 10px;
+  padding: 0.375rem 0.75rem !important;
+  font-size: 0.9rem !important;
+}
+
+@media (max-width: 992px) {
+  .hover-card {
+    flex: 0 1 calc(50% - 30px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hover-card {
+    flex: 0 1 calc(100% - 30px);
+  }
+
+  .card-container {
+    padding: 10px;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hover-card {
+    min-width: 250px;
+  }
+}
+
+.custom-dropdown-btn {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: auto !important;
+  min-width: 100px !important;
+  max-width: 150px !important;
+  margin: 0 auto !important;
+  margin-top: 1rem !important;
+  height: auto !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+}
+
+/* Style for the dropdown button text */
+.custom-dropdown-btn .dropdown-toggle {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+
+/* Ensure the dropdown menu is centered */
+.custom-dropdown-btn .dropdown-menu {
+  min-width: 100%;
+  width: auto;
+  text-align: center;
+}
+
+.custom-dropdown-btn .dropdown-item {
+  padding: 0.25rem 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}

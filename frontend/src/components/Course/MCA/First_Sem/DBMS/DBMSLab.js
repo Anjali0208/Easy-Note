@@ -4,6 +4,7 @@ import Tables from "../../../Tables";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import { Divider } from "@mui/material";
 import { Link } from "react-router-dom";
 
@@ -13,7 +14,17 @@ function JLab() {
       <div style={{ marginTop: "40px", textAlign: "center", color: "grey" }}>
         <h1>Database Management Systems Lab (MCA-165)</h1>
       </div>
-
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <Link
+          to="/dbms_prac"
+          style={{ textDecoration: "none", marginRight: "20px" }}
+        >
+          <Button variant="outlined">Practical</Button>
+        </Link>
+        <Link to="/course_mca_first" style={{ textDecoration: "none" }}>
+          <Button variant="outlined">Back to course</Button>
+        </Link>
+      </div>
       <div style={{ margin: "50px" }}>This page contains Syllabus of MCA</div>
 
       {/* Description table */}

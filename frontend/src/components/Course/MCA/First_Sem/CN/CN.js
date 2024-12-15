@@ -16,7 +16,7 @@ function CN() {
         <h1>Computer Networks (MCA-103)</h1>
       </div>
 
-      {/* 3 links for syllabus, notes and question paper */}
+      {/*  links for syllabus, notes and question paper etc */}
       <div style={{ textAlign: "center", marginTop: "20px" }}>
         <Link
           to="/cn_lab"
@@ -38,8 +38,14 @@ function CN() {
         >
           <Button variant="outlined">Question Paper</Button>
         </Link>
-        <Link to="/cn_ebook" style={{ textDecoration: "none" }}>
+        <Link
+          to="/cn_ebook"
+          style={{ textDecoration: "none", marginRight: "20px" }}
+        >
           <Button variant="outlined">Ebook</Button>
+        </Link>
+        <Link to="/course_mca_first" style={{ textDecoration: "none" }}>
+          <Button variant="outlined">Back to course</Button>
         </Link>
       </div>
       <div style={{ margin: "50px" }}>This page contains Syllabus of MCA</div>

@@ -1,0 +1,40 @@
+.navbar {
+    width: 100%;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.header_logo {
+    max-height: 40px;
+    margin-right: 10px;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .navbar-collapse {
+        background-color: #86469C;
+        padding: 10px;
+    }
+
+    .header_logo {
+        max-height: 35px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .header_logo {
+        max-height: 30px;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+}

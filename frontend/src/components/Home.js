@@ -1,8 +1,7 @@
 import React from "react";
 import Banner from "./Banner/Banner";
-import Card from "./Card";
+import Cards from "./Cards";
 import Headline from "./Headline";
-// import { Link } from 'react-router-dom'
 import "./Home.css";
 
 function Home() {
@@ -12,7 +11,7 @@ function Home() {
         <Banner />
         <Headline />
         <div className="home_card">
-          <Card />
+          <Cards />
         </div>
       </div>
     </>

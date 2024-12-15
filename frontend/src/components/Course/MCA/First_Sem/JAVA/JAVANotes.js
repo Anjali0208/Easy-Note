@@ -110,7 +110,7 @@ export default function BasicTable() {
     <>
       <Container className="container">
         <Box margin="25px">
-          <Typography variant="h5">Database Management System</Typography>
+          <Typography variant="h5">JAVA Notes</Typography>
         </Box>
         <input type="file" onChange={handleFileChange} />
         <Button onClick={handleNoteUpload} disabled={!noteFile}>

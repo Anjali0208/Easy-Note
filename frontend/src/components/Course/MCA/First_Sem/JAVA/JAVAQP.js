@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ref, getDownloadURL, listAll } from "firebase/storage";
+import { ref, getDownloadURL, listAll, uploadBytes } from "firebase/storage";
 import { storage } from "../../../../../firebase";
 import {
   Box,
@@ -13,12 +13,15 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 export default function BasicTable1() {
   const [data, setData] = useState([]);
+  const [noteTitle, setNoteTitle] = useState("");
+  const [noteFile, setNoteFile] = useState(null);
 
   useEffect(() => {
-    const listRef = ref(storage, "MCA/First/First_Sem/JAVA/JAVA_qp/");
+    const listRef = ref(storage, "MCA/First/First_Sem/JAVA/JAVA/JAVA_QP/");
     listAll(listRef)
       .then((res) => {
         res.items.forEach((item) => {
@@ -29,6 +32,46 @@ export default function BasicTable1() {
         alert(err.message);
       });
   }, []);
+
+  const handleFileChange = (e) => {
+    setNoteFile(e.target.files[0]);
+  };
+
+  const handleNoteUpload = async () => {
+    const storageRef = ref(storage, "MCA/First/First_Sem/JAVA/JAVA/JAVA_QP");
+    const fileRef = ref(storageRef, noteFile.name);
+
+    try {
+      await uploadBytes(fileRef, noteFile);
+
+      const downloadURL = await getDownloadURL(fileRef);
+
+      const firestore = getFirestore();
+      console.log("1");
+      await addDoc(collection(firestore, "JAVA_QP"), {
+        title: noteTitle,
+        fileUrl: downloadURL,
+      })
+        .then(() => {
+          window.location.reload();
+        })
+        .catch((e) => {
+          console.log("error");
+        });
+
+      console.log("2");
+      // const notesSnapshot = await getDocs(collection(firestore, "UserNotes")); // Updated collection name to UserNotes
+      // const updatedData = notesSnapshot.docs.map((doc) => doc.data().title);
+
+      // setData(updatedData);
+
+      setNoteTitle("");
+      setNoteFile(null);
+    } catch (error) {
+      console.error("Error uploading note:", error);
+      alert("Failed to upload note. Please try again.");
+    }
+  };
 
   const download = (name) => {
     getDownloadURL(ref(storage, `MCA/First/First_Sem/JAVA/JAVA_qp/${name}`))
@@ -70,9 +113,13 @@ export default function BasicTable1() {
   return (
     <>
       <Container className="container">
-        <Box margin="25px 0px 0px 25px">
-          <Typography variant="h5">JAVA Question Paper</Typography>
+        <Box margin="25px">
+          <Typography variant="h5">JAVA Question Papers</Typography>
         </Box>
+        <input type="file" onChange={handleFileChange} />
+        <Button onClick={handleNoteUpload} disabled={!noteFile}>
+          Upload Note
+        </Button>
         <Listing data={data} />
       </Container>
     </>

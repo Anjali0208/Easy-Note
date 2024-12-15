@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ref, getDownloadURL, listAll, uploadBytes } from "firebase/storage";
-import { storage, db } from "../../../../../firebase";
+import { storage } from "../../../../../firebase";
 import {
   Box,
   Table,
@@ -13,33 +13,27 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import { collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 export default function BasicTable() {
   const [data, setData] = useState([]);
   const [noteTitle, setNoteTitle] = useState("");
   const [noteFile, setNoteFile] = useState(null);
-  const [isUploading, setIsUploading] = useState(false);
 
-  const fetchData = async () => {
-    try {
-      const listRef = ref(storage, "MCA/First/First_Sem/DS/DS/UserNotes");
+  useEffect(() => {
+    const fetchData = async () => {
+      const listRef = ref(storage, "MCA/First/First_Sem/JAVA/JAVA/Ebook");
       const listResult = await listAll(listRef);
       const noteNames = listResult.items.map((item) => item.name);
       setData(noteNames);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  useEffect(() => {
+    };
     fetchData();
   }, []);
 
   const download = async (name) => {
     try {
       const url = await getDownloadURL(
-        ref(storage, `MCA/First/First_Sem/DS/DS/UserNotes/${name}`)
+        ref(storage, `MCA/First/First_Sem/JAVA/JAVA/Ebook/${name}`)
       );
       const win = window.open(url, "_blank");
       if (win != null) {
@@ -55,32 +49,38 @@ export default function BasicTable() {
   };
 
   const handleNoteUpload = async () => {
-    if (!noteFile || isUploading) return;
-
-    setIsUploading(true);
-    const storageRef = ref(storage, "MCA/First/First_Sem/DS/DS/UserNotes");
+    const storageRef = ref(storage, "MCA/First/First_Sem/JAVA/JAVA/Ebook");
     const fileRef = ref(storageRef, noteFile.name);
 
     try {
-      // Upload file to Storage
       await uploadBytes(fileRef, noteFile);
 
-      // Reset form
+      const downloadURL = await getDownloadURL(fileRef);
+
+      const firestore = getFirestore();
+      console.log("1");
+      await addDoc(collection(firestore, "Ebook"), {
+        title: noteTitle,
+        fileUrl: downloadURL,
+      })
+        .then(() => {
+          window.location.reload();
+        })
+        .catch((e) => {
+          console.log("error");
+        });
+
+      console.log("2");
+      // const notesSnapshot = await getDocs(collection(firestore, "UserNotes")); // Updated collection name to UserNotes
+      // const updatedData = notesSnapshot.docs.map((doc) => doc.data().title);
+
+      // setData(updatedData);
+
       setNoteTitle("");
       setNoteFile(null);
-
-      // Fetch updated list
-      await fetchData();
-
-      alert("File uploaded successfully!");
-
-      // Force reload the page after successful upload
-      // window.location.reload();
     } catch (error) {
       console.error("Error uploading note:", error);
       alert("Failed to upload note. Please try again.");
-    } finally {
-      setIsUploading(false);
     }
   };
 
@@ -107,15 +107,17 @@ export default function BasicTable() {
   };
 
   return (
-    <Container className="container">
-      <Box margin="25px">
-        <Typography variant="h5">Discrete Structure (MCA-101)</Typography>
-      </Box>
-      <input type="file" onChange={handleFileChange} disabled={isUploading} />
-      <Button onClick={handleNoteUpload} disabled={!noteFile || isUploading}>
-        {isUploading ? "Uploading..." : "Upload Note"}
-      </Button>
-      <Listing data={data} />
-    </Container>
+    <>
+      <Container className="container">
+        <Box margin="25px">
+          <Typography variant="h5">JAVA Ebook</Typography>
+        </Box>
+        <input type="file" onChange={handleFileChange} />
+        <Button onClick={handleNoteUpload} disabled={!noteFile}>
+          Upload Note
+        </Button>
+        <Listing data={data} />
+      </Container>
+    </>
   );
 }
